@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -26,7 +27,9 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player died!");
+
         // Добавь логику, что происходит, когда игрок умирает
         // Например, перезагрузка сцены, остановка игры или вывод экрана смерти
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

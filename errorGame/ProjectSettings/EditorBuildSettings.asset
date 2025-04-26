@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: ad11f435774b56940b8dc7ea0a9d7884
+  - enabled: 1
+    path: Assets/Scenes/Senya.unity
+    guid: f2d810ea4b04af645b85e87ab3683900
   m_configObjects: {}

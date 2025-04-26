@@ -5,7 +5,7 @@ public class GameController : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("Senya");
     }
 
     public void ExitGame()

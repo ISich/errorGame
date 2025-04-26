@@ -13,10 +13,12 @@ public class PlayerHealth : MonoBehaviour
         anim = GetComponent<Animator>();  // Получаем компонент Animator
     }
 
-    // Метод для получения урона
+    // Метод получения урона
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        Debug.Log("Игрок получил урон! Текущее здоровье: " + currentHealth);
+
         if (currentHealth <= 0)
         {
             Die();  // Если здоровье стало меньше 0, вызываем смерть
@@ -26,10 +28,10 @@ public class PlayerHealth : MonoBehaviour
     // Метод для смерти персонажа
     void Die()
     {
-        Debug.Log("Персонаж умер!");
+        Debug.Log("Игрок умер!");
 
-        // Устанавливаем Trigger для анимации смерти
-        anim.SetTrigger("Die");
+        // Устанавливаем флаг в Animator, чтобы анимация смерти началась
+        anim.SetBool("IsDead", true);
 
         // Дополнительно можно отключить управление персонажем после смерти
         // Например, отключаем движение:

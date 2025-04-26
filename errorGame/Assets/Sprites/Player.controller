@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Die
+    m_ConditionEvent: IsDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5150069897059627244}
@@ -69,7 +69,7 @@ AnimatorStateMachine:
     m_Position: {x: 150, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5150069897059627244}
-    m_Position: {x: 410, y: 150, z: 0}
+    m_Position: {x: 460, y: 170, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -8553599382005328425}
@@ -172,8 +172,8 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Die
-    m_Type: 9
+  - m_Name: IsDead
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0

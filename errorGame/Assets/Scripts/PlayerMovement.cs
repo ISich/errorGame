@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>(); // Получаем компонент Animator
+        anim = GetComponent<Animator>();
+        anim.SetBool("IsDead", false);// Получаем компонент Animator
     }
 
     void Update()

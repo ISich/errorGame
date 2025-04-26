@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
         // Если игрок нажал клавишу для атаки (например, пробел)
         if (Input.GetKeyDown(KeyCode.Space))  // Можно заменить на любую клавишу
         {
+            Debug.Log("АТАКА НАЧАЛАСЬ");
             Attack();
         }
     }
@@ -20,12 +21,13 @@ public class PlayerAttack : MonoBehaviour
     {
         // Показываем область удара с использованием OverlapCircle
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
+        Debug.Log(hitEnemies.Length);
         // Проходим по всем врагам в области удара
         foreach (var enemy in hitEnemies)
         {
             // Наносим урон врагу
-            enemy.GetComponent<EnemyHealth>()?.TakeDamage(damage);  // Враг получает урон
+            enemy.GetComponent<EnemyHealth>()?.TakeDamage(damage);
+            Debug.Log("Урон злодею " + this.damage);// Враг получает урон
         }
 
         // Для отладки можно добавить визуализацию области удара

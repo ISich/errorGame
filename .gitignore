@@ -27,6 +27,7 @@
 *.tmp
 *.bak
 *.old
+*.dwlt
 *.log
 *.DS_Store
 Thumbs.db

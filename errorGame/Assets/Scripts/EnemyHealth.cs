@@ -2,13 +2,19 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float health = 100f;
+    public float maxHealth = 100f;   // Максимальное здоровье
+    private float currentHealth;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     public void TakeDamage(float amount)
     {
-        health -= amount;
-        Debug.Log("Enemy hp " + health);
-        if (health <= 0)
+        currentHealth -= amount;
+        Debug.Log("Enemy hp " + currentHealth);
+        if (currentHealth <= 0)
         {
             Die();
         }

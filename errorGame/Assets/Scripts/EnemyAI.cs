@@ -27,6 +27,7 @@ public class EnemyAI : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.position);
         if (distance <= attackRange && Time.time > lastAttackTime + attackCooldown)
         { // Наносим урон игроку
+            player.GetComponent<PlayerHealth>()?.TakeDamage(damage);
             lastAttackTime = Time.time;  // Обновляем время последней атаки
         }
     }

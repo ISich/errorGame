@@ -16,12 +16,14 @@ public class PlayerHealth : MonoBehaviour
     // Метод получения урона
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        Debug.Log("Игрок получил урон! Текущее здоровье: " + currentHealth);
-
         if (currentHealth <= 0)
         {
             Die();  // Если здоровье стало меньше 0, вызываем смерть
+        }
+        else
+        {
+            currentHealth -= damage;
+            Debug.Log("Игрок получил урон! Текущее здоровье: " + currentHealth);
         }
     }
 
@@ -30,10 +32,15 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Игрок умер!");
 
-        // Устанавливаем флаг в Animator, чтобы анимация смерти началась
-        anim.SetBool("IsDead", true);
-        anim.SetBool("IsExit", true);
-        // Дополнительно можно отключить управление персонажем после смерти
-        // Например, отключаем движение:
+        // Устанавливаем параметр в Animator, чтобы анимация смерти началась
+        anim.SetInteger("State", 2);  // Устанавливаем состояние в 2 для Die
+    }
+    
+    public void OnDeathAnimEnd()
+    
+    {
+        Debug.Log("52");
+        // Переходим в Exit — Animator покинет state-машину
+        anim.SetInteger("State", 0); // останавливает Animator напрочь// не обязателен, но можно
     }
 }

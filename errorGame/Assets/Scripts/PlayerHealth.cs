@@ -32,9 +32,8 @@ public class PlayerHealth : MonoBehaviour
 
         // Устанавливаем флаг в Animator, чтобы анимация смерти началась
         anim.SetBool("IsDead", true);
-
+        anim.SetBool("IsExit", true);
         // Дополнительно можно отключить управление персонажем после смерти
         // Например, отключаем движение:
-        this.enabled = false;
     }
 }

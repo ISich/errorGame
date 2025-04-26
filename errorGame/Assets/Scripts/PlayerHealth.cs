@@ -2,31 +2,37 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth = 100f;    // Максимальное здоровье
-    private float currentHealth;      // Текущее здоровье
+    private Animator anim;  // Ссылка на Animator
+
+    public float maxHealth = 100f;
+    private float currentHealth;
 
     void Start()
     {
         currentHealth = maxHealth;
+        anim = GetComponent<Animator>();  // Получаем компонент Animator
     }
 
-    // Функция получения урона
-    public void TakeDamage(float amount)
+    // Метод для получения урона
+    public void TakeDamage(float damage)
     {
-        currentHealth -= amount;  // Уменьшаем здоровье
-
-        Debug.Log("Player took damage! HP = " + currentHealth);
-
+        currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Die();  // Если здоровье = 0, вызываем функцию смерти
+            Die();  // Если здоровье стало меньше 0, вызываем смерть
         }
     }
 
+    // Метод для смерти персонажа
     void Die()
     {
-        Debug.Log("Player died!");
-        // Добавь логику, что происходит, когда игрок умирает
-        // Например, перезагрузка сцены, остановка игры или вывод экрана смерти
+        Debug.Log("Персонаж умер!");
+
+        // Устанавливаем Trigger для анимации смерти
+        anim.SetTrigger("Die");
+
+        // Дополнительно можно отключить управление персонажем после смерти
+        // Например, отключаем движение:
+        this.enabled = false;
     }
 }

@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
 
-        if (Input.GetMouseButtonDown(0)) // Левая кнопка мыши
+        if (Input.GetMouseButtonDown(0)) // Левая кнопка мыши (атака)
         {
             Attack();
         }

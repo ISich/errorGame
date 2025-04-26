@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        anim.SetBool("IsDead", false);// Получаем компонент Animator
+        anim.SetInteger("State", 0); // Устанавливаем начальное состояние (Idle)
     }
 
     void Update()
@@ -20,10 +20,18 @@ public class PlayerMovement : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize(); // Нормализуем, чтобы скорость была одинаковой во всех направлениях
-
-        // Передаем параметр IsMoving в Animator (для переключения анимаций)
-        bool isMoving = moveInput.sqrMagnitude > 0.01f;  // Проверяем, движется ли персонаж
-        anim.SetBool("IsMoving", isMoving);  // Устанавливаем параметр в Animator
+        if (anim.GetInteger("State") != 2)
+        {
+            // Проверяем, движется ли персонаж
+            if (moveInput.sqrMagnitude > 0.01f) // Персонаж двигается
+            {
+                anim.SetInteger("State", 1); // Устанавливаем состояние в 1 для Walking
+            }
+            else // Персонаж не двигается
+            {
+                anim.SetInteger("State", 0); // Устанавливаем состояние в 0 для Idle
+            }
+        }
     }
 
     void FixedUpdate()
